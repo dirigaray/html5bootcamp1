@@ -1,19 +1,36 @@
 function getTweets() {
-	$.getJSON('http://search.twitter.com/search.json?q=html5&callback=?&rpp=5&include_entities=true&result_type=mixed', function(data) {
-		var list = "<ul>";
-		$.each(data.results, function(index, item){
-			list +="<li>";
-			list +="<img src='"+ item.profile_image_url + "'/>";
-			list +="<p>" + item.from_user + "</p>";
-			list +="<p>" + item.text + "</p>";
-			list +="<p>" + item.created_at + "</p>";
-			list +="</li>";
-		});
+	$.ajax({
+		url: 'http://search.twitter.com/search.json?q=html5&callback=?&rpp=5&include_entities=true&result_type=mixed', 
+		beforeSend: function() {
+			$('.block').addClass('loading');
+			$(document).keydown(function(e) { 
+				if (e.which == 27) {
+					$('#tweetsContainer').hide();
+					$('.block').hide();
+				}
+			});
+		} ,
+		success:function(data) {
+			var list = "<ul>";
+			$.each(data.results, function(index, item){
+				list +="<li>";
+				list +="<img src='"+ item.profile_image_url + "'/>";
+				list +="<p>" + item.from_user + "</p>";
+				list +="<p>" + item.text + "</p>";
+				list +="<p>" + item.created_at + "</p>";
+				list +="</li>";
+			});
 
-		list += "</ul>";
+			list += "</ul>";
 
-		$('#tweetsContainer').html(list).show();
+			$('#tweetsContainer').html(list).show();
 		
+		},
+		complete: function() {
+			$('.block').removeClass('loading'); 
+		},
+		dataType: 'jsonp'
+
 	});
 }
 
@@ -21,9 +38,18 @@ function getName() {
 	
 	$.ajax({
   		dataType: "json",
-		url: 'http://bootcamp.aws.af.cm/welcome/Damian',
+		url: 'http://bootcamp.aws.af.cm/welcome/' + $('#alias').val(),
 		success: function(data) {
 			$('#serviceResponse').html(data.response).css('background', 'yellow');
+			
+			$('#serviceResponse').html( 
+               $('#serviceResponse').text().replace(
+                    $('#alias').val()
+                    ,'<span containsStringImLookingFor="true">' + $('#alias').val() + '</span>' 
+               ) 
+           	);
+
+			$('*[containsStringImLookingFor]').css("border","solid 2px red");
 
 		},
 		error: function(data) {
@@ -47,6 +73,5 @@ $(document).ready(function(){
 	$('#alias').focus();
 
 	$('#btSearch').click(getName);
-
 
 });
