@@ -1,0 +1,10 @@
+{
+	"name": "Damian Irigaray", 
+	"photo": "/images/photo.jpg",
+	"email": "damian.irigaray@globant.com",
+	"phone": "123456789",
+	"university": "UNICEN",
+	"languages":["Ingles","Espanol"],
+	"skills": ["Java", "PHP", "Scrum"],
+	"experiences": ["Kron", "Intercomgi", "Globant"]
+}

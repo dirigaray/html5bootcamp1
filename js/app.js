@@ -11,11 +11,17 @@ requirejs.config({
 		"jquery": {
 			exports: "$"
 		},
-		"jquery.mobile": {
-			deps: ["jquery"],
-			exports: "$Mob"
-		}
-	},
+		"handlebars": {
+            exports: "Handlebars"
+        },
+        "underscore": {
+            exports: '_'
+        },
+        "dust": {
+            exports: "dust"
+        },
+
+	}
 });
 
 // Load the main app module to start the app
