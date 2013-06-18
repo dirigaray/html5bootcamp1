@@ -1,10 +1,24 @@
-{
-	"name": "Damian Irigaray", 
-	"photo": "/images/photo.jpg",
-	"email": "damian.irigaray@globant.com",
-	"phone": "123456789",
-	"university": "UNICEN",
-	"languages":["Ingles","Espanol"],
-	"skills": ["Java", "PHP", "Scrum"],
-	"experiences": ["Kron", "Intercomgi", "Globant"]
-}
+[
+		{
+			"name": "ET", 
+			"duration": "90",
+			"director": "Steven Spilberg"
+		},
+		{
+			"name": "Rambo", 
+			"duration": "98",
+			"director": "Jim"
+		},{
+			"name": "Terminator II", 
+			"duration": "96",
+			"director": "nn"
+		},{
+			"name": "Duro de Matar", 
+			"duration": "110",
+			"director": "Pepe"
+		},{
+			"name": "Matrix", 
+			"duration": "190",
+			"director": "Pepa"
+		}
+]

@@ -11,16 +11,13 @@ requirejs.config({
 		"jquery": {
 			exports: "$"
 		},
-		"handlebars": {
-            exports: "Handlebars"
-        },
         "underscore": {
             exports: '_'
         },
-        "dust": {
-            exports: "dust"
-        },
-
+		"backbone": {
+            deps : ["underscore", "jquery"],
+            exports : "Backbone"
+        }
 	}
 });
 
